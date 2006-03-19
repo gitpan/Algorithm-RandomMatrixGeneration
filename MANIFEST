@@ -1,0 +1,6 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Algorithm-RandomMatrixGeneration.t
+lib/Algorithm/RandomMatrixGeneration.pm

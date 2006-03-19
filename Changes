@@ -1,0 +1,6 @@
+Revision history for Perl extension Algorithm::RandomMatrixGeneration.
+
+0.01  Sat Mar 18 20:06:48 2006
+	- original version; created by h2xs 1.23 with options
+		-AXc -n Algorithm::RandomMatrixGeneration
+
