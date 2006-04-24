@@ -4,3 +4,8 @@ Revision history for Perl extension Algorithm::RandomMatrixGeneration.
 	- original version; created by h2xs 1.23 with options
 		-AXc -n Algorithm::RandomMatrixGeneration
 
+0.02  Mon Apr 24, 2006
+
+- Generates real valued matrix only if either of the input marginals is real valued else generates integer valued matrix.
+
+- Stores the matrix in sparse format. That is, not every value of the returned array is defined but only non-zero values are stored in the matrix.

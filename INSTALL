@@ -5,7 +5,7 @@ SYNOPSIS
 	perl Makefile.PL
 	make
 	make test
-    make install
+	make install
 	make clean	
 
 DESCRIPTION
@@ -24,9 +24,9 @@ DESCRIPTION
 	The usual way to install the package is to run the following commands:
 
 	perl Makefile.PL
-    make
-    make test
-    make install
+	make
+	make test
+	make install
 	make clean
 
 	Method 2
@@ -35,9 +35,9 @@ DESCRIPTION
         be used
 
 	perl Makefile.PL LIB=/home/anagha/lib
-    make
-    make test
-    make install
+	make
+	make test
+	make install
 	make clean
 
 	In this case the module will be installed in /home/anagha/lib (provided you have read-write permissions to this directory) and 
@@ -47,9 +47,9 @@ DESCRIPTION
 	--------
 	Executing the following commands
 	perl Makefile.PL PREFIX=/home/anagha/Algorithm-RandomMatrixGeneration
-   	make
-    make test
-    make install
+	make
+	make test
+	make install
 	make clean
 
     will install the module in /home/anagha/Algorithm-RandomMatrixGeneration/lib/perl5/site_perl/5.8.5 (provided you have 
