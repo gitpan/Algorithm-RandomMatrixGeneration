@@ -13,7 +13,7 @@ use warnings;
 
 use Test::More tests => 2;
 
-BEGIN { use_ok('Algorithm::RandomMatrixGeneration') };
+BEGIN { use_ok('Algorithm::RandomMatrixGenerationNegative') };
 
 # expected matrix 
 my @expected = qw (10.1899 2.4357 0.1198 0.2646 2.9373 4.3689 1.6020 2.0918 1.7620 2.6271 4.6497 3.9612 4.9395 1.9305 2.4624 3.6676 2.9623 8.6504 0.3734 0.0139 0.2140 11.9924 0.7927 0.0009);

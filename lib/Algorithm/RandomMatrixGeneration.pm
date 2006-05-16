@@ -11,7 +11,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT = qw( generateMatrix );
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 # add check for type of marginal values
 # modify output format to sparse.
@@ -56,10 +56,13 @@ sub generateMatrix
 
 	# find the type of marginals values: integers/real
 	# assume integer and loop through row and col marginals.
-	my $format = "integer";
-
 	# check each value for decimal values.
 	# break on first occurrence of real number.
+	my $format = "integer";
+
+	# also find if any of the marginal is negative
+	# assume positive and then loop through to find a contradiction
+	my $signValues = "positive";
 
 	# for each row (0..n)
 	for(my $i=0; $i<=$n; $i++)
@@ -67,11 +70,22 @@ sub generateMatrix
 		if($tmp_rmar[$i] =~ /\.0*[1-9]+/)
 		{
 			$format = "real";
-			last;
+			if($signValues eq "negative")
+			{
+				last;
+			}
+		}
+		if($tmp_rmar[$i] =~ /^-/)
+		{
+			$signValues = "negative";
+			if($format eq "real")
+			{
+				last;
+			}
 		}
 	}
 
-	if($format eq "integer")
+	if($format eq "integer" || $signValues eq "positive")
 	{
 		# for each col (0..m)
 		for(my $j=0; $j<=$m; $j++)
@@ -79,7 +93,18 @@ sub generateMatrix
 			if($tmp_cmar[$j] =~ /\.0*[1-9]+/)
 			{
 				$format = "real";
-				last;
+				if($signValues eq "negative")
+				{
+					last;
+				}
+			}
+			if($tmp_cmar[$j] =~ /^-/)
+			{
+				$signValues = "negative";
+				if($format eq "real")
+				{
+					last;
+				}
 			}
 		}
 	}
@@ -92,7 +117,7 @@ sub generateMatrix
 	{
 		if($precision !~ /^[0-9]+$/)
 		{
-			print STDERR "Please specify integer value for precision when the marginals are real valued.\n";
+			print STDERR "Please specify integer value for precision.\n";
 			exit 1;
 		}
 
@@ -144,9 +169,13 @@ sub generateMatrix
 				
 				# based on the row_marg and the sum_of_col_marg decide the value for min
 				$min = $tmp_rmar[$i] - $rem_col_marg;
-				if($min < 0)
+
+				if($signValues eq "positive")
 				{
-					$min = 0;
+					if($min < 0)
+					{
+						$min = 0;
+					}
 				}
 			}
 			else
@@ -158,6 +187,16 @@ sub generateMatrix
 			{
 				$min = sprintf($fmt_str, $min);
 				$max = sprintf($fmt_str, $max);
+			}
+
+			if($signValues eq "negative")
+			{
+				if($min > $max)
+				{
+					my $tmp_min = $min;
+					$min = $max;
+					$max = $tmp_min;
+				}
 			}
 
 			my $rand_num = 0;
@@ -188,6 +227,21 @@ sub generateMatrix
 				$rand_num = $min;
 			}			
 			
+			if($signValues eq "negative")
+			{
+				#last col of the row
+				if($j == $m)
+				{
+					$rand_num = $tmp_rmar[$i];
+				}
+				
+				#last row of the cols
+				if($i == $n)
+				{
+					$rand_num = $tmp_cmar[$j];
+				}
+			}
+
 			if($format eq "real")
 			{
 				my $val = sprintf($fmt_str,$rand_num);
@@ -231,21 +285,18 @@ Algorithm::RandomMatrixGeneration - Perl module to generate matrix given the mar
   use Algorithm::RandomMatrixGeneration;
   my @result = generateMatrix(\@row_marginals, \@col_marginals);
 
-  Example: Integer Valued Marginals:
+  Example: Negative Integer Valued Marginals:
   use Algorithm::RandomMatrixGeneration;
-  my @rmargs = (13,11,13,13,12,13);
-  my @cmargs = (23,32,10,10);
+  my @rmar = ('-5','5','-3');
+  my @cmar = ('2','3','-2','-6');
   my @result = generateMatrix(\@rmargs, \@cmargs, "-");
 	
   Output matrix could be:
-  0 6  2 4  3 3
-  0 9  2 2
-  0 1  1 1  2 4  3 7
-  0 5  1 8
-  0 2  1 10
-  1 13
+  0 -1 1 3 2 -5 3 -2
+  0 5
+  0 -2 2 3 3 -4
 
-  Example: Real Valued Marginals:
+  Example: Positive Real Valued Marginals:
   use Algorithm::RandomMatrixGeneration;
   my @rmargs = (13.01,11,13,13,12,13);
   my @cmargs = (23.005,32.005,10,10);
@@ -293,7 +344,8 @@ This module generates a random matrix given the row and column marginals in such
 the row and column marginals of the resultant matrix are same as the given marginals.
 
 If the given marginals are real valued then the generated cell values are real too. If the
-given marginals are integer valued then the generated cell values are integers.
+given marginals are integer valued then the generated cell values are integers. If any of 
+the marginals are negative then few/all of the generated cell values would be negative too.
 
 =head1 FURTHER DETAILS
 
@@ -338,10 +390,13 @@ for each cell C(i,j)
             2_term = 2_term + col_marg[k]
         }
         min = row_marg[i] - 2_term
-        if(min < 0)
-        {
-            min = 0
-        }
+		if(marginals positive)
+		{
+        	if(min < 0)
+        	{
+            	min = 0
+        	}
+		}
     }
     else
     {

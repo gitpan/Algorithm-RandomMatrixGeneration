@@ -9,3 +9,8 @@ Revision history for Perl extension Algorithm::RandomMatrixGeneration.
 - Generates real valued matrix only if either of the input marginals is real valued else generates integer valued matrix.
 
 - Stores the matrix in sparse format. That is, not every value of the returned array is defined but only non-zero values are stored in the matrix.
+
+0.03  Mon May 15, 2006
+
+- Handles the case of negative marginals - if a marginal of the given matrix is negative then generates appropriate positive and negative cell 
+values such that the marginal of the resultant row/column is the required negative value.

@@ -2,6 +2,8 @@ Changes
 Makefile.PL
 MANIFEST
 README
-t/integer.t
-t/real.t
+t/positive_integer.t
+t/positive_real.t
+t/negative_integer.t
+t/negative_real.t
 lib/Algorithm/RandomMatrixGeneration.pm
