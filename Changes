@@ -14,3 +14,8 @@ Revision history for Perl extension Algorithm::RandomMatrixGeneration.
 
 - Handles the case of negative marginals - if a marginal of the given matrix is negative then generates appropriate positive and negative cell 
 values such that the marginal of the resultant row/column is the required negative value.
+
+0.04  Wed May 17, 2006
+
+- Modified the requirement of Perl 5.8.5 to 5.8
+- Corrected the t/*.t files

@@ -1,19 +1,9 @@
-# test1.t version 0.01
-# (Updated 03/18/2006 -- Anagha)
-#
-# A script to run test on the Algorithm::RandomMatrixGeneration module.
-# This test cases check if same seed for the random number generated is used 
-# then is the generated matrix same as that expected.
-# The following are among the tests run by this script:
-# 1. Try loading the Algorithm::RandomMatrixGeneration i.e. is it added to the @INC variable
-# 2. Compare the answer returned by the Algorithm::RandomMatrixGeneration with the actual andwer
-
 use strict;
 use warnings;
 
 use Test::More tests => 2;
 
-BEGIN { use_ok('Algorithm::RandomMatrixGenerationNegative') };
+BEGIN { use_ok('Algorithm::RandomMatrixGeneration') };
 
 # expected matrix 
 my @expected = qw (10.1899 2.4357 0.1198 0.2646 2.9373 4.3689 1.6020 2.0918 1.7620 2.6271 4.6497 3.9612 4.9395 1.9305 2.4624 3.6676 2.9623 8.6504 0.3734 0.0139 0.2140 11.9924 0.7927 0.0009);

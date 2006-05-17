@@ -57,7 +57,7 @@ DESCRIPTION
 	last directory in the path will be your systems perl version). This path should be appended to PERL5LIB environment variable.
 
    System Requirements
-        This package has been written in Perl(v5.8.5),
+        This package has been written in Perl(v5.8),
         which is freely available from www.perl.org. 
 
 AUTHORS

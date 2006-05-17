@@ -1,6 +1,6 @@
 package Algorithm::RandomMatrixGeneration;
 
-use 5.008005;
+use 5.008;
 use strict;
 use warnings;
 use Math::BigFloat;
@@ -11,7 +11,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT = qw( generateMatrix );
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 # add check for type of marginal values
 # modify output format to sparse.
