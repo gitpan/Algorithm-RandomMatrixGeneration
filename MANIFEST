@@ -1,9 +1,12 @@
 Changes
+GPL.txt
+INSTALL.pod
+lib/Algorithm/RandomMatrixGeneration.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 README
-t/positive_integer.t
-t/positive_real.t
 t/negative_integer.t
 t/negative_real.t
-lib/Algorithm/RandomMatrixGeneration.pm
+t/positive_integer.t
+t/positive_real.t
+META.yml                                 Module meta-data (added by MakeMaker)

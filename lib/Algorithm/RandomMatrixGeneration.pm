@@ -1,6 +1,6 @@
 package Algorithm::RandomMatrixGeneration;
 
-use 5.008;
+use 5.006;
 use strict;
 use warnings;
 use Math::BigFloat;
@@ -11,7 +11,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT = qw( generateMatrix );
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 # add check for type of marginal values
 # modify output format to sparse.
@@ -656,12 +656,15 @@ generateMatrix
 
 =head1 AUTHOR
 
- Anagha Kulkarni, E<lt>kulka020@d.umn.eduE<gt>
- Ted Pedersen, E<lt.tpederse@d.umn.eduE<gt> 
+ Anagha Kulkarni, Carnegie-Mellon University
+ anaghak at cs.cmu.edu
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2006 by Anagha Kulkarni, Ted Pedersen
+Copyright (C) 2006-2008 by Anagha Kulkarni, Ted Pedersen
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

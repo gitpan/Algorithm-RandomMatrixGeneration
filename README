@@ -372,11 +372,14 @@ FURTHER DETAILS
     generateMatrix
 
 AUTHOR
-     Anagha Kulkarni, E<lt>kulka020@d.umn.eduE<gt>
-     Ted Pedersen, E<lt.tpederse@d.umn.eduE<gt> 
+     Anagha Kulkarni, Carnegie-Mellon University
+     anaghak at cs.cmu.edu
+
+     Ted Pedersen, University of Minnesota, Duluth
+     tpederse at d.umn.edu
 
 COPYRIGHT AND LICENSE
-    Copyright (C) 2006 by Anagha Kulkarni, Ted Pedersen
+    Copyright (C) 2006-2008 by Anagha Kulkarni, Ted Pedersen
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
