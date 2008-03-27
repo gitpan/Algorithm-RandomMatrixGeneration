@@ -1,5 +1,9 @@
 Revision history for Perl extension Algorithm::RandomMatrixGeneration.
 
+0.06  Thu Mar 27, 2008
+
+	- Modified Makefile.PL to require Math::BigFloat 1.58
+
 0.05  Tue Mar 25, 2008
 
 	- relaxed Perl version requirement to 5.6

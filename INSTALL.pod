@@ -64,7 +64,7 @@ from L<http://www.perl.org>.
 
 =head1 AUTHORS
 
-	Anagha Kulkarni, University of Minnesota Duluth
+	Anagha Kulkarni, Carnegie-Mellon University
 	anaghak <at> cs.cmu.edu
 	
 	Ted Pedersen,  University of Minnesota Duluth

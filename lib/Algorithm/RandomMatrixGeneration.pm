@@ -11,7 +11,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT = qw( generateMatrix );
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 # add check for type of marginal values
 # modify output format to sparse.
@@ -278,14 +278,15 @@ __END__
 
 =head1 NAME
 
-Algorithm::RandomMatrixGeneration - Perl module to generate matrix given the marginals.
+Algorithm::RandomMatrixGeneration - Generate internal cell values for a matrix given fixed marginal totals.  
 
 =head1 SYNOPSIS
 
   use Algorithm::RandomMatrixGeneration;
   my @result = generateMatrix(\@row_marginals, \@col_marginals);
 
-  Example: Negative Integer Valued Marginals:
+=head2 Example: Negative Integer Valued Marginals:
+
   use Algorithm::RandomMatrixGeneration;
   my @rmar = ('-5','5','-3');
   my @cmar = ('2','3','-2','-6');
@@ -296,7 +297,8 @@ Algorithm::RandomMatrixGeneration - Perl module to generate matrix given the mar
   0 5
   0 -2 2 3 3 -4
 
-  Example: Positive Real Valued Marginals:
+=head2 Example: Positive Real Valued Marginals:
+
   use Algorithm::RandomMatrixGeneration;
   my @rmargs = (13.01,11,13,13,12,13);
   my @cmargs = (23.005,32.005,10,10);
@@ -314,11 +316,13 @@ Algorithm::RandomMatrixGeneration - Perl module to generate matrix given the mar
 
 The generateMatrix function can take 4 parameters:
 
-  1. Single dimensional array containing row marginals (Can be real valued or integers)
-  2. Single dimensional array containing column marginals (Can be real valued or integers)
-  3. Precision: For the integer valued marginal specifying "-". For real valued marginals 
-     specify the required precision for the generated matrix values. (Recommended Precision = 4)
-  4. Seed: Seed for the random number generator (Default: None) (Optional parameter)
+=over 4
+
+=item 1. Single dimensional array containing row marginals (Can be real valued or integers)
+=item 2. Single dimensional array containing column marginals (Can be real valued or integers)
+=item 3. Precision: For the integer valued marginal specifying "-". For real valued marginals specify the required precision for the generated matrix values. (Recommended Precision = 4)
+=item 4. Seed: Seed for the random number generator (Default: None) (Optional parameter)
+=back
 
 =head1 OUTPUT
 
